@@ -1,0 +1,38 @@
+CREATE TABLE IF NOT EXISTS loginD(" +
+	"username            VARCHAR2(20)       NOT NULL PRIMARY KEY," +
+	"password            VARCHAR2(100)      NOT NULL," +
+	"lastLogged          DATETIME           NOT NULL DEFAULT CURRENT_TIMESTAMP," +
+	"UNIQUE (username)" +
+");
+CREATE TABLE IF NOT EXISTS personalD(" +
+	"username       VARCHAR2(20)    NOT NULL," +
+	"fname			VARCHAR2(20)	NOT NULL," +
+	"lname			VARCHAR2(20)	NOT NULL," +
+	"dob			DATE		    NOT NULL," +
+	"email			VARCHAR2(100)	NOT NULL," +
+	"FOREIGN KEY (username) REFERENCES loginD (username)" +
+");
+CREATE TABLE IF NOT EXISTS textEntries(" +
+	"uID			INTEGER PRIMARY KEY   AUTOINCREMENT," +
+	"username		VARCHAR2(20)    NOT NULL," +
+	"logged			DATE            NOT NULL," +
+	"filename		VARCHAR2(10)	NOT NULL," +
+	"UNIQUE (uID)," +
+	"FOREIGN KEY (username) REFERENCES loginD (username)" +
+");
+CREATE TABLE IF NOT EXISTS audioEntries(" +
+	"uID			INTEGER PRIMARY KEY   AUTOINCREMENT," +
+	"username		VARCHAR2(20)    NOT NULL," +
+	"logged			DATE            NOT NULL," +
+	"filename		VARCHAR2(10)	NOT NULL," +
+	"UNIQUE (uID)," +
+	"FOREIGN KEY (username) REFERENCES loginD (username)" +
+");
+CREATE TABLE IF NOT EXISTS videoEntries(" +
+	"uID			INTEGER PRIMARY KEY   AUTOINCREMENT," +
+	"username		VARCHAR2(20)    NOT NULL," +
+	"logged			DATE            NOT NULL," +
+	"filename		VARCHAR2(10)	NOT NULL," +
+	"UNIQUE (uID)," +
+	"FOREIGN KEY (username) REFERENCES loginD (username)" +
+");
